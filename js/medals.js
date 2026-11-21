@@ -2,9 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import {
   getAuth,
   GoogleAuthProvider,
-  getRedirectResult,
   onAuthStateChanged,
-  signInWithRedirect,
+  signInWithPopup,
   signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
@@ -37,6 +36,19 @@ function showError(message) {
   error.textContent = message;
   error.hidden = false;
   document.getElementById("medal-list").replaceChildren();
+}
+
+function showAuthError(error) {
+  console.error("Firebase authentication failed:", error);
+  setStatus("ログインエラー");
+
+  if (error.code === "auth/unauthorized-domain") {
+    showError(`このURLはFirebase Authenticationの承認済みドメインにありません。Firebase ConsoleのAuthentication > Settings > Authorized domainsに「${window.location.hostname}」を追加してください。`);
+  } else if (error.code === "auth/operation-not-allowed") {
+    showError("Firebase ConsoleでGoogleログインプロバイダを有効にしてください。");
+  } else {
+    showError("ログインに失敗しました。");
+  }
 }
 
 function renderMedals(snapshot) {
@@ -125,22 +137,16 @@ function subscribeMedals() {
 export function initMedals() {
   const button = document.getElementById("medal-auth-button");
 
-  getRedirectResult(auth).catch(error => {
-    console.error("Firebase redirect login failed:", error);
-    showError("ログインに失敗しました。");
-  });
-
   button.addEventListener("click", async () => {
     setLoading(true);
     try {
       if (auth.currentUser) {
         await signOut(auth);
       } else {
-        await signInWithRedirect(auth, provider);
+        await signInWithPopup(auth, provider);
       }
     } catch (error) {
-      console.error("Firebase authentication failed:", error);
-      showError("ログインに失敗しました。");
+      showAuthError(error);
     } finally {
       setLoading(false);
     }
@@ -156,6 +162,10 @@ export function initMedals() {
       setStatus("ログイン済み");
       button.textContent = "ログアウト";
       document.getElementById("medal-error").hidden = true;
+      const loading = document.createElement("li");
+      loading.className = "empty-state";
+      loading.textContent = "メダルを読み込み中...";
+      document.getElementById("medal-list").replaceChildren(loading);
       subscribeMedals();
     } else {
       setStatus("ログインが必要です");
