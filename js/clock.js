@@ -4,6 +4,7 @@ export function initClock() {
   const headerWeekdayElement = document.getElementById("header-weekday");
   const tomorrowScheduleHeading = document.getElementById("tomorrow-schedule-heading");
   const timeline = document.getElementById("weather-timeline");
+  const nowDot = document.querySelector(".timeline-now-dot");
   const currentTimeElement = document.getElementById("current-time");
 
   const gregorianDateFormatter = new Intl.DateTimeFormat("ja-JP", { year: "numeric" });
@@ -42,6 +43,7 @@ export function initClock() {
     currentTimeElement.textContent = timeFormatter.format(now);
 
     const currentMinutes = now.getHours() * 60 + now.getMinutes();
+    nowDot.hidden = currentMinutes < 7 * 60 || currentMinutes > 19 * 60;
     let markerPosition;
     if (currentMinutes <= 7 * 60) {
       markerPosition = 100 / 6;
