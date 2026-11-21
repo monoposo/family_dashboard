@@ -202,8 +202,37 @@ h1 { font-size: clamp(22px, 2.4vw, 28px); letter-spacing: 0.02em; }
 
 .calendar-card, .medal-card { padding: 16px 20px 8px; }
 .card-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.section-heading { margin-bottom: 8px; }
-h2 { font-size: 20px; font-weight: 650; }
+.section-heading { margin-bottom: 6px; }
+h2 { font-size: 24px; font-weight: 700; }
+.calendar-auth, .medal-auth {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-left: auto;
+  text-align: right;
+}
+.calendar-auth-status, .medal-auth-status {
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.calendar-auth-button, .medal-auth-button {
+  border: 1px solid #d7dee8;
+  border-radius: 999px;
+  background: #fff;
+  color: #3d5d7f;
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.calendar-auth-button:disabled, .medal-auth-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
 .sample-tag {
   padding: 5px 9px;
   border-radius: 20px;
@@ -232,7 +261,7 @@ h2 { font-size: 20px; font-weight: 650; }
 .event {
   display: grid;
   grid-template-columns: 62px 1fr;
-  min-height: 58px;
+  min-height: 68px;
   align-items: center;
   gap: 12px;
   border-top: 1px solid var(--line);
@@ -246,36 +275,51 @@ h2 { font-size: 20px; font-weight: 650; }
   padding: 5px 7px;
   background: #edf3fc;
   color: #526276;
-  font-size: 17px;
+  font-size: 20px;
   font-variant-numeric: tabular-nums;
   font-weight: 700;
 }
-.event-title { font-size: 17px; font-weight: 650; }
-.event-detail { margin-top: 5px; color: var(--muted); font-size: 15px; }
+.event-title { font-size: 20px; font-weight: 700; }
+.event-detail { margin-top: 3px; color: var(--muted); font-size: 17px; }
 .empty-state { min-height: 58px; display: grid; place-items: center; border-top: 1px solid var(--line); color: var(--muted); }
 
 .medal-card { display: flex; flex-direction: column; min-height: 0; }
-.medal-list { display: flex; flex: 1; flex-direction: column; justify-content: space-between; }
+.medal-list { display: flex; flex: 1; flex-direction: column; justify-content: flex-start; }
+.medal-auth { display: flex; align-items: center; gap: 8px; }
+.medal-auth-status { color: var(--muted); font-size: 13px; }
+.medal-auth-button {
+  min-height: 36px;
+  border: 1px solid #dce4ee;
+  border-radius: 9px;
+  padding: 7px 10px;
+  background: #fff;
+  color: #356bc4;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.medal-auth-button:disabled { cursor: wait; opacity: 0.65; }
 .medal-row {
   display: flex;
-  min-height: 68px;
+  min-height: 70px;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  gap: 12px;
   border-top: 1px solid var(--line);
 }
-.store-name { font-size: 17px; font-weight: 650; }
-.store-place { margin-top: 4px; color: var(--muted); font-size: 14px; }
+.store-name { font-size: 20px; font-weight: 700; }
+.store-place { margin-top: 2px; color: var(--muted); font-size: 16px; }
 .deadline { text-align: right; white-space: nowrap; }
 .days-left {
   border-radius: 9px;
   padding: 5px 9px;
   background: #fff3e5;
   color: #9c5d17;
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 700;
 }
-.deadline-date { margin-top: 5px; color: var(--muted); font-size: 14px; }
+.deadline-date { margin-top: 3px; color: var(--muted); font-size: 16px; }
 .medal-row.expired .days-left { background: #fff0ef; color: #c75252; }
 .card-error {
   min-height: 58px;

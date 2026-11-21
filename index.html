@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#f3f5f8">
   <title>家族のダッシュボード</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
   <main class="dashboard">
@@ -56,7 +57,10 @@
       <article class="card calendar-card" id="calendar-card">
         <div class="card-heading section-heading">
           <h2>予定</h2>
-          <span class="sample-tag">サンプル</span>
+          <div class="calendar-auth">
+            <span class="calendar-auth-status" id="calendar-auth-status">ログイン確認中</span>
+            <button class="calendar-auth-button" id="calendar-auth-button" type="button">カレンダーを接続</button>
+          </div>
         </div>
         <div class="schedule-days" id="calendar-schedule">
           <section class="schedule-day" aria-labelledby="today-schedule-heading">
@@ -81,7 +85,10 @@
             <h2>預けメダル</h2>
             <p class="subtle">期限が近い順に表示</p>
           </div>
-          <span class="sample-tag">サンプル</span>
+          <div class="medal-auth">
+            <span class="medal-auth-status" id="medal-auth-status">ログイン確認中</span>
+            <button class="medal-auth-button" id="medal-auth-button" type="button">Googleでログイン</button>
+          </div>
         </div>
         <ul class="medal-list" id="medal-list"></ul>
         <p class="card-error" id="medal-error" hidden>メダル期限を取得できません。</p>
