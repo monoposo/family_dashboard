@@ -7,6 +7,12 @@
 - <https://monoposo.github.io/family_dashboard/>
 - `master` ブランチへの変更は GitHub Actions経由で自動公開されます。
 
+### iPadのホーム画面に追加
+
+1. iPadのSafariで公開ページを開きます。
+2. 共有ボタンから「ホーム画面に追加」を選びます。
+3. 「追加」をタップすると、ホーム画面のアイコンからアプリのように開けます。
+
 ## 機能
 
 - 現在時刻、日付、曜日（西暦・和暦）
@@ -48,6 +54,8 @@ Firebase設定値やOAuthクライアントIDはブラウザーから参照で�
 ## ファイル構成
 
 - `index.html` — ダッシュボードのマークアップ
+- `manifest.json` — ホーム画面表示用のWebアプリ設定
+- `icon-192.png`、`icon-512.png`、`apple-touch-icon.png` — アプリアイコン
 - `styles.css` — レイアウトと表示スタイル
 - `js/app.js` — 各機能の初期化
 - `js/clock.js` — 時計、日付、現在時刻プロット
