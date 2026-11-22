@@ -2,6 +2,11 @@
 
 壁掛けタブレットで家族の情報を確認するための、静的なWebダッシュボードです。
 
+## 公開ページ
+
+- <https://monoposo.github.io/family_dashboard/>
+- `master` ブランチへの変更は GitHub Actions経由で自動公開されます。
+
 ## 機能
 
 - 現在時刻、日付、曜日（西暦・和暦）
